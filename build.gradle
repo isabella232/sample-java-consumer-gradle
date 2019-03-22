@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'kafkaesque'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+def pulsarVersion = '2.3.0'
+
+dependencies {
+    compile group: 'org.apache.pulsar', name: 'pulsar-client', version: pulsarVersion
+}
