@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class simpleConsumer {
 
-    private static final String SERVICE_URL = "pulsar://asiaeast2.gcp.kafkaesque.io:6650";
+    private static final String SERVICE_URL = "pulsar+ssl://useast1.gcp.kafkaesque.io:6651";
 
     public static void main(String[] args) throws IOException
     {
@@ -14,11 +14,14 @@ public class simpleConsumer {
         // Create client object
         PulsarClient client = PulsarClient.builder()
                 .serviceUrl(SERVICE_URL)
+                .authentication(
+                        AuthenticationFactory.token("<INSERT CLIENT TOKEN HERE>")
+                )
                 .build();
 
         // Create consumer on a topic with a subscription
         Consumer consumer = client.newConsumer()
-                .topic("mytenant2/local-asiaeast2-gcp/test-topic")
+                .topic("chris-kafkaesque-io/local-useast1-gcp/tc1-messages")
                 .subscriptionName("my-subscription")
                 .subscribe();
 
